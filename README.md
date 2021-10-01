@@ -11,7 +11,8 @@ git clone https://github.com/Hattyot/Pibot.git
 pip3 install -e PiBot
 ```
 
-## Movement methods
+## Methods
+### Movement methods
 These are the functions used to move the bot
 ```python
 set_left_wheel_speed(percentage)
@@ -19,8 +20,9 @@ set_right_wheel_speed(percentage)
 set_wheels_speed(percentage)
 ```
 
-## Sensor methods
-The PiBot has 6 sensors
+### Sensor methods
+The PiBot has 6 sensors\
+ranges from 0 (black) to 1024 (white)
 ```python
 #      3    4
 #    2        5
@@ -39,14 +41,28 @@ get_right_line_sensors()  # sensors 4, 5, 6
 get_line_sensors()  # all the sensors
 ```
 
-## Sleeping
+### Position
+Find out the robot's position on the given track.\
+The returned coordinates are in pixels.\
+There are 100 pixels in a meter.
+```python
+get_position()
+```
+
+### Rotation
+Find out the robot's rotation.\
+The rotation is in degrees 0-356
+```python
+get_rotation()
+```
+
+### Sleeping
 After the movement parameters have been set, the sleep function needs to be called to move the robot
 ```python
 sleep(time)
 ```
 
-
-## Done
+### Done
 After you've completed the objective with the robot, the done function needs to be called, a picture showing you the path the robot took will be saved
 ```python
 done()

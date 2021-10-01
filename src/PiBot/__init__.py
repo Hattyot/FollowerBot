@@ -2,7 +2,7 @@ import time
 import sys
 from math import pi, degrees
 from .world import World
-from .constants import RPS_PER_PERCENTAGE, WHEEL_DIAMETER
+from .constants import RPS_PER_PERCENTAGE, WHEEL_DIAMETER, PIXELS_PER_METER
 from typing import Callable
 
 
@@ -22,12 +22,14 @@ class PiBot:
     ----------
     track_image: str
         Path to the track image the bot will be on.
-    timeout: int
-        Sleep time until robot raises Timeout exception.
+    starting_orientation: int
+        The starting rotation of the robot, defaults to -90 (points to north)
     start_x: int
         X coordinate where robot will start.
     start_y: int
         Y coordinate where robot will start.
+    timeout: int
+        Sleep time until robot raises Timeout exception.
 
     Sensors:
               3    4
@@ -37,14 +39,15 @@ class PiBot:
     def __init__(
             self,
             track_image: str = 'track.png',
-            timeout: int = 30,
+            starting_orientation: int = -90,
             start_x: int = 250,
             start_y: int = 450,
+            timeout: int = 30,
     ):
         self._left_rps = 0
         self._right_rps = 0
 
-        self._world = World(track_image, start_x, start_y)
+        self._world = World(track_image, starting_orientation, start_x, start_y)
 
         # variable used to keep track of real time taken
         self._time_start = time.time()
@@ -127,7 +130,7 @@ class PiBot:
         """
         Value of the pixel under the sensor 3
 
-        :returns: int that ranges from 0 (white) to 1024 (black)
+        :returns: int that 0 (black) to 1024 (white)
         """
         return self._world.sensor_value_at(-0.01, 0.03)
 
@@ -135,7 +138,7 @@ class PiBot:
         """
         Value of the pixel under the sensor 2
 
-        :returns: int that ranges from 0 (white) to 1024 (black)
+        :returns: int that 0 (black) to 1024 (white)
         """
         return self._world.sensor_value_at(-0.02, 0.02)
 
@@ -143,7 +146,7 @@ class PiBot:
         """
         Value of the pixel under the sensor 1
 
-        :returns: int that ranges from 0 (white) to 1024 (black)
+        :returns: int that 0 (black) to 1024 (white)
         """
         return self._world.sensor_value_at(-0.03, 0.01)
 
@@ -151,7 +154,7 @@ class PiBot:
         """
         Value of the pixel under the sensor 4
 
-        :returns: int that ranges from 0 (white) to 1024 (black)
+        :returns: int that 0 (black) to 1024 (white)
         """
         return self._world.sensor_value_at(0.01, 0.03)
 
@@ -159,7 +162,7 @@ class PiBot:
         """
         Value of the pixel under the sensor 5
 
-        :returns: int that ranges from 0 (white) to 1024 (black)
+        :returns: int that 0 (black) to 1024 (white)
         """
         return self._world.sensor_value_at(0.02, 0.02)
 
@@ -167,7 +170,7 @@ class PiBot:
         """
         Value of the pixel under the sensor 6
 
-        :returns: int that ranges from 0 (white) to 1024 (black)
+        :returns: int that 0 (black) to 1024 (white)
         """
         return self._world.sensor_value_at(0.03, 0.01)
 
@@ -209,21 +212,31 @@ class PiBot:
         """
         return int(degrees(self._world.robot_phi))
 
+    def get_position(self) -> tuple:
+        """
+        The position of the robot on the track.
+        :return tuple: (x, y) coordinates of the robot
+        """
+        return round(self._world.robot_x * PIXELS_PER_METER), round(self._world.robot_y * PIXELS_PER_METER)
+
     def _time_taken(self) -> float:
         """
         The amount of real time taken to execute to program in seconds.
-        :return: flaot
+        :return: float
         """
         end = time.time()
         return end - self._time_start
 
-    def done(self):
-        """Function to call when the bot runner is done."""
+    def done(self, save_image: str = "robot_path.png"):
+        """
+        Function to call when the bot runner is done.
+        :param str save_image: path where to save the path taken image.
+        """
         self._world.done = True
-        self._world.turtle.draw_robot(self._world.robot_x, self._world.robot_y)
+        # self._world.turtle.draw_robot(self._world.robot_x, self._world.robot_y)
 
         print(f'Real time taken to complete: {round(self._time_taken() * 1000)}ms')
         print(f'Sleep time taken to complete: {round(self.time_from_start)}s')
         print(f'steps taken to complete: {self.steps_taken}')
 
-        self._world.save_image('robot_path.png')
+        self._world.save_image(save_image)

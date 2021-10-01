@@ -18,12 +18,12 @@ class World:
         Y coordinate where robot will start.
 
     """
-    def __init__(self, track_image, start_x, start_y):
+    def __init__(self, track_image: str, starting_orientation: int, start_x: int, start_y: int):
         self.robot_x = start_x/PIXELS_PER_METER
         self.robot_y = start_y/PIXELS_PER_METER
         self.robot_path = [(round(self.robot_x * PIXELS_PER_METER), round(self.robot_y * PIXELS_PER_METER))]
 
-        self.robot_phi = radians(-90)  # robot rotation in radians
+        self.robot_phi = radians(starting_orientation)  # robot rotation in radians
 
         if not os.path.exists(track_image):
             raise Exception(f'Unable to find a track image: "{track_image}"')
@@ -65,7 +65,7 @@ class World:
             rotation_change = (right_delta - left_delta) / AXIS_LENGTH
             self.robot_x += R * sin(rotation_change + self.robot_phi) - R * sin(self.robot_phi)
             self.robot_y += - R * cos(rotation_change + self.robot_phi) + R * cos(self.robot_phi)
-            self.robot_phi = self.robot_phi + rotation_change
+            self.robot_phi += rotation_change
 
         pixel_cords = (round(self.robot_x * PIXELS_PER_METER), round(self.robot_y * PIXELS_PER_METER))
         self.robot_path.append(pixel_cords)
@@ -118,8 +118,8 @@ class World:
         :return: x,y coordinates of the point in the world.
         """
         # maths for point rotation around origin
-        s = cos(self.robot_phi)
-        c = sin(self.robot_phi)
+        s = cos(-self.robot_phi)
+        c = sin(-self.robot_phi)
         x_new = x * c + y * s
         y_new = x * s - y * c
 
@@ -133,8 +133,8 @@ class World:
         :param y: sensor's distance from the robot on the y axis
         :return:
         """
-        s = cos(self.robot_phi)
-        c = sin(self.robot_phi)
+        s = cos(-self.robot_phi)
+        c = sin(-self.robot_phi)
         x_new = (x * c + y * s) + self.robot_x
         y_new = (x * s - y * c) + self.robot_y
 
