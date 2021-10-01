@@ -233,7 +233,7 @@ class PiBot:
         :param str save_image: path where to save the path taken image.
         """
         self._world.done = True
-        # self._world.turtle.draw_robot(self._world.robot_x, self._world.robot_y)
+        self._world.turtle.draw_robot(self._world.robot_x, self._world.robot_y)
 
         print(f'Real time taken to complete: {round(self._time_taken() * 1000)}ms')
         print(f'Sleep time taken to complete: {round(self.time_from_start)}s')

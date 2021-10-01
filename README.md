@@ -11,6 +11,17 @@ git clone https://github.com/Hattyot/Pibot.git
 pip3 install -e PiBot
 ```
 
+
+# The little robot that could
+The robot has radius of 5px \
+It has 6 sensors in this configuration.
+```
+      3    4
+    2        5
+  1            6
+```
+The sensors are always seperated by 1-2px
+
 ## Methods
 ### Movement methods
 These are the functions used to move the bot
@@ -24,9 +35,6 @@ set_wheels_speed(percentage)
 The PiBot has 6 sensors\
 ranges from 0 (black) to 1024 (white)
 ```python
-#      3    4
-#    2        5
-#  1            6
 get_third_line_sensor_from_left()  # sensor 1
 get_second_line_sensor_from_left()  # sensor 2
 get_left_line_sensor()  # sensor 3
