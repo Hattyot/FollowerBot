@@ -55,16 +55,6 @@ class PiBot:
         # variable used to keep track of sleep time
         self.time_from_start = 0
         self._timeout = timeout
-        self.steps_taken = 0
-
-    def __getattribute__(self, item):
-        """Magic method implemented to count the number of function calls made directly by the user."""
-        obj = super().__getattribute__(item)
-        previous_frame = sys._getframe(1)
-        if isinstance(obj, Callable) and not item.startswith('_') and previous_frame.f_code.co_filename != __file__:
-            self.steps_taken += 1
-
-        return obj
 
     def set_left_wheel_speed(self, percentage: float) -> None:
         """
@@ -237,6 +227,5 @@ class PiBot:
 
         print(f'Real time taken to complete: {round(self._time_taken() * 1000)}ms')
         print(f'Sleep time taken to complete: {round(self.time_from_start)}s')
-        print(f'steps taken to complete: {self.steps_taken}')
 
         self._world.save_image(save_image)
