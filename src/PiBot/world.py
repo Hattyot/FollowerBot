@@ -123,7 +123,7 @@ class World:
         x_new = x * c + y * s
         y_new = x * s - y * c
 
-        return self.robot_x + x_new, self.robot_y - y_new
+        return self.robot_x + x_new, self.robot_y + y_new
 
     def sensor_value_at(self, x, y):
         """
@@ -135,8 +135,8 @@ class World:
         """
         s = cos(-self.robot_phi)
         c = sin(-self.robot_phi)
-        x_new = (x * c + y * s) + self.robot_x
-        y_new = (x * s - y * c) + self.robot_y
+        x_new = self.robot_x + (x * c + y * s)
+        y_new = self.robot_y + (x * s - y * c)
 
         return self._ground_value_at(x_new, y_new)
 
