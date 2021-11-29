@@ -7,8 +7,8 @@ A simplistic robot simulator based on [https://github.com/iti0201/robot](https:/
 ## Install
 ### Through Git:
 ```
-git clone https://github.com/Hattyot/Pibot.git
-pip3 install -e PiBot
+git clone https://github.com/Hattyot/FollowerBot.git
+pip3 install -e FollowerBot
 ```
 
 
@@ -32,7 +32,7 @@ set_wheels_speed(percentage)
 ```
 
 ### Sensor methods
-The PiBot has 6 sensors\
+The FollowerBot has 6 sensors\
 ranges from 0 (black) to 1024 (white)
 ```python
 get_third_line_sensor_from_left()  # sensor 1
@@ -79,9 +79,9 @@ done()
 ## Example
 A simple example of a robot that will drive straight for a bit.
 ```python
-from PiBot import PiBot
+from FollowerBot import FollowerBot
 
-robot = PiBot()
+robot = FollowerBot()
 
 robot.set_wheels_speed(30)
 robot.sleep(2)

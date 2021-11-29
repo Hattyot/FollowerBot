@@ -1,13 +1,13 @@
 import setuptools
 
 setuptools.setup(
-    name="PiBot",
+    name="FollowerBot",
     version="0.0.1",
     author="Hattyot",
     description="A robot simulator",
-    url="https://github.com/Hattyot/PiBot",
+    url="https://github.com/Hattyot/FollowerBot",
     project_urls={
-        "Bug Tracker": "https://github.com/Hattyot/PiBot/issues"
+        "Bug Tracker": "https://github.com/Hattyot/FollowerBot/issues"
     },
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),

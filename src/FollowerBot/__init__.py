@@ -14,9 +14,9 @@ class Timeout(Exception):
     pass
 
 
-class PiBot:
+class FollowerBot:
     """
-    PiBot class
+    FollowerBot class
 
     Attributes
     ----------
