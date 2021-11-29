@@ -1,5 +1,5 @@
-A simplistic robot simulator based on [https://github.com/iti0201/robot](https://github.com/iti0201/robot), 
-Continuation on the work done by tiloom.
+A simplistic robot simulator based on [https://github.com/iti0201/robot](https://github.com/iti0201/robot).
+
 
 ## Requirements
 * python 3.9
