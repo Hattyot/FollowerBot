@@ -76,6 +76,9 @@ After you've completed the objective with the robot, the done function needs to 
 done()
 ```
 
+## Track
+the track the bot runs on can be any image. Track image path can be specified in the FollowerBot class args.
+
 ## Example
 A simple example of a robot that will drive straight for a bit.
 ```python
