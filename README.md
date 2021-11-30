@@ -6,9 +6,13 @@ A simplistic robot simulator based on [https://github.com/iti0201/robot](https:/
 
 ## Install
 ### Through Git:
-```
+```bash
 git clone https://github.com/Hattyot/FollowerBot.git
 pip3 install -e FollowerBot
+```
+or
+```bash
+pip3 install git+https://github.com/Hattyot/FollowerBot.git#egg=FollowerBot
 ```
 
 
