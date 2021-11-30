@@ -10,6 +10,9 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/Hattyot/FollowerBot/issues"
     },
     package_dir={"": "src"},
+    install_requires=[
+         'Pillow==8.4.0'
+    ],
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.9",
 )
