@@ -61,13 +61,6 @@ There are 100 pixels in a meter.
 get_position()
 ```
 
-### Rotation
-Find out the robot's rotation.\
-The rotation is in degrees 0-356
-```python
-get_rotation()
-```
-
 ### Sleeping
 After the movement parameters have been set, the sleep function needs to be called to move the robot
 ```python
