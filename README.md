@@ -64,7 +64,7 @@ get_position()
 ### Sleeping
 After the movement parameters have been set, the sleep function needs to be called to move the robot
 ```python
-sleep(time)
+sleep(time: float)
 ```
 
 ### Done
