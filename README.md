@@ -76,7 +76,7 @@ done()
 ## Track
 the track the bot runs on can be any image. Track image path can be specified in the FollowerBot class args.
 
-## Example
+## Example code
 A simple example of a robot that will drive straight for a bit.
 ```python
 from FollowerBot import FollowerBot
@@ -89,5 +89,7 @@ robot.set_wheels_speed(0)
 robot.done()
 ```
 
+## Example track
+![track.png](https://github.com/Hattyot/FollowerBot/blob/main/track.png?raw=true)
 
 
