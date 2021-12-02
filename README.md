@@ -90,6 +90,6 @@ robot.done()
 ```
 
 ## Example track
-![track.png](https://github.com/Hattyot/FollowerBot/blob/main/track.png?raw=true)
+![track.png](track.png)
 
 
