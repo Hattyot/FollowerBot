@@ -171,9 +171,9 @@ class FollowerBot:
         :return: List[int]
         """
         return [
-            self.get_left_line_sensor(),
+            self.get_third_line_sensor_from_left(),
             self.get_second_line_sensor_from_left(),
-            self.get_third_line_sensor_from_left()
+            self.get_left_line_sensor()
         ]
 
     def get_right_line_sensors(self) -> list[int]:
