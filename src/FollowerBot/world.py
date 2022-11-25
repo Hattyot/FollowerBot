@@ -23,7 +23,7 @@ class World:
         self.robot_y = start_y/PIXELS_PER_METER
         self.robot_path = [(round(self.robot_x * PIXELS_PER_METER), round(self.robot_y * PIXELS_PER_METER))]
 
-        self.robot_phi = radians(starting_orientation)  # robot rotation in radians
+        self.robot_phi = -radians(starting_orientation)  # robot rotation in radians
 
         if not os.path.exists(track_image):
             raise Exception(f'Unable to find a track image: "{track_image}"')
@@ -61,11 +61,11 @@ class World:
             self.robot_x += left_delta * cos(self.robot_phi)
             self.robot_y += left_delta * sin(self.robot_phi)
         else:
-            R = AXIS_LENGTH * (left_delta + right_delta) / (2 * (right_delta - left_delta))
-            rotation_change = (right_delta - left_delta) / AXIS_LENGTH
+            R = AXIS_LENGTH * (left_delta + right_delta) / (2 * (left_delta - right_delta))
+            rotation_change = (left_delta - right_delta) / AXIS_LENGTH
             self.robot_x += R * sin(rotation_change + self.robot_phi) - R * sin(self.robot_phi)
             self.robot_y += - R * cos(rotation_change + self.robot_phi) + R * cos(self.robot_phi)
-            self.robot_phi -= rotation_change
+            self.robot_phi += rotation_change
 
         pixel_cords = (round(self.robot_x * PIXELS_PER_METER), round(self.robot_y * PIXELS_PER_METER))
         self.robot_path.append(pixel_cords)
