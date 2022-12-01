@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="FollowerBot",
-    version="0.0.1",
+    version="0.0.2",
     author="Hattyot",
     description="A robot simulator",
     url="https://github.com/Hattyot/FollowerBot",
