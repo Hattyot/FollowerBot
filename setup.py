@@ -11,7 +11,7 @@ setuptools.setup(
     },
     package_dir={"": "src"},
     install_requires=[
-         'Pillow==8.4.0'
+         'Pillow==9.3.0'
     ],
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.9",
